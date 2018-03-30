@@ -11,7 +11,6 @@
         <ul class="wl_content_list">
           <li class="item" v-for="(item, index) in items" :key="index">
             <div class="item_top">
-              <!-- <img src="`~img/type-${item.flash_type}.png`" alt="不同新闻logo"> -->
               <img v-if="item.flash_type===1" src="~img/type-1.png" alt="不同新闻logo">
               <img v-else-if="item.flash_type===2" src="~img/type-2.png" alt="不同新闻logo">
               <img v-else-if="item.flash_type===3" src="~img/type-3.png" alt="不同新闻logo">
@@ -21,7 +20,7 @@
           </li>
         </ul>
       </div>
-      <loading v-show="loading"/>
+      <loading v-show="loading || !items.length"/>
     </div>
     
     <!-- right -->
@@ -35,7 +34,7 @@
 <script>
 import axios from 'axios';
 import scroll from '../../directives/directives';
-import loading from '../../components/loading';
+import Loading from '../../components/Loading';
  
 export default {
   data () {
@@ -47,7 +46,7 @@ export default {
     };
   },
   components: {
-    loading
+    Loading
   },
   methods: {
 
@@ -83,7 +82,7 @@ export default {
       if (!this.loading) {
         this.loading = true;
         // 请求下一页数据
-        await this.getNewsList(this.page++);
+        await this.getNewsList(++this.page);
       }
     }
 
@@ -99,9 +98,7 @@ export default {
 <style lang="scss" scoped>
   .wrap {
     width: 1200px;
-    margin: 66px auto;
-    height: 100%;
-    background: red;
+    margin: 66px auto 0;
     .wrapleft {
       width: 800px;
       .wrapleft_crumbs {
@@ -117,6 +114,10 @@ export default {
           border-image: -webkit-linear-gradient(left, green,orange,red) 30 30 30;
           border-image: -moz-linear-gradient(left, green,orange,red) 30 30 30;
           border-image: linear-gradient(to right, green,orange,red) 30 30 30;
+          span {
+            display: inline-block;
+            width: 65px;
+          }
           img {
             width: 200px;
             vertical-align: middle;
@@ -126,6 +127,8 @@ export default {
           .item {
             padding-left: 10px;
             padding-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f3f5f7;
             .item_top {
               height: 50px;
               line-height: 50px;

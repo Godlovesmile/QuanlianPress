@@ -3,16 +3,19 @@
     <!-- 导航 -->
     <Nav/>
     <router-view class="content"/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Nav from '../src/components/Nav';
+import Footer from '../src/components/Footer';
 
 export default {
   name: 'App',
   components: {
-    Nav
+    Nav,
+    Footer
   },
   methods: {
   }

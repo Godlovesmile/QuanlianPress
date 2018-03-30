@@ -11,4 +11,4 @@ const scroll = Vue.directive('scroll', {
     }
 });
 
-export {scroll};
+export { scroll };
