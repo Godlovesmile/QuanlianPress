@@ -53,6 +53,8 @@ export default {
     // 1.获取红绿灯信息
     getTrafficLightInfo () {
       let url = 'http://ob.6cd12.cn/v1/api/alerts/page/info';
+      // let url = 'http://zx.meet.aodirock.com/v1/api/alerts/page/info';
+      // let url = '/api/v1/api/alerts/page/info';
       let _this = this;
       axios.get(url).then(res => {
         // console.log(res);
@@ -65,6 +67,8 @@ export default {
     // 2.获取新闻信息
     getNewsList (page) {
       let url = 'http://ob.6cd12.cn/v1/api/alerts/total/list';
+      // let url = 'http://zx.meet.aodirock.com/v1/api/alerts/total/list';
+      // let url = '/api/v1/api/alerts/total/list';
       let _this = this;
       axios.post(url, {
         'page': page,

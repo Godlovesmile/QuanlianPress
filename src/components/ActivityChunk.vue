@@ -12,11 +12,11 @@
 
       <div class="chunk_address">
            <div class="ad">
-                <img class="ad_img" src="../../static/images/address.png" alt="地址">
+                <img class="" src="../../static/images/address.png" alt="时间">
                 <span>{{data.address}}</span>
             </div>
             <div class="time">
-                <img class="time_img" src="../../static/images/time.png" alt="时间">
+                <img class="" src="../../static/images/time.png" alt="时间">
                 <span>{{data.start_time + '-' +  data.end_time}}</span>
             </div>
       </div>
@@ -84,6 +84,7 @@ export default {
             margin-top: 10px;
             height: 25px;
             line-height: 25px;
+            // background: red;
             span {
                 display: inline-block;
                 width: 345px;
