@@ -8,6 +8,7 @@
           <span>{{time}}</span>
           <img src="~img/info-two.png" alt="红绿灯图标">
         </div>
+        <div class="line"></div>
         <ul class="wl_content_list">
           <li class="item" v-for="(item, index) in items" :key="index">
             <div class="item_top">
@@ -109,15 +110,19 @@ export default {
         padding-left: 10px;
         line-height: 69px;
       }
+      .line {
+        width: 100%;
+        height: 1px;
+        background: -webkit-linear-gradient(left, green,orange,red);
+        background: -moz-linear-gradient(left, green,orange,red);
+        background: linear-gradient(to right, green,orange,red);
+        background: linear-gradient(to right, green, orange, red);
+      }
       .wrapleft_content {
         background: #fff;
         .wl_content_time {
           padding: 0 10px;
           line-height: 69px;
-          border-bottom: 1px solid; 
-          border-image: -webkit-linear-gradient(left, green,orange,red) 30 30 30;
-          border-image: -moz-linear-gradient(left, green,orange,red) 30 30 30;
-          border-image: linear-gradient(to right, green,orange,red) 30 30 30;
           span {
             display: inline-block;
             width: 65px;
@@ -132,6 +137,7 @@ export default {
             padding-left: 10px;
             padding-top: 30px;
             padding-bottom: 10px;
+            // outline: none;
             border-bottom: 1px solid #f3f5f7;
             .item_top {
               height: 50px;

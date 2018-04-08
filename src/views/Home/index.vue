@@ -1,7 +1,8 @@
 <template>
   <div class="wrap clearfix">
     <div class="fl wrapleft">
-      <swiper class="swiperBox" :options="swiperOption">
+      <!-- loop pic -->
+      <swiper class="swiperBox" ref="mySwiper" :options="swiperOption" @mouseover.native="mouseEnter()" @mouseout.native="mouseLeave()">
         <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
           <img :src="slide.pic" alt="banner">
         </swiper-slide>
@@ -9,6 +10,8 @@
         <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
         <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
       </swiper>
+      <!-- tag list -->
+      <tag />
     </div>
     <div class="fr wrapright">
         <p>比卡丘</p>
@@ -27,6 +30,7 @@
       margin-top: 69px;
         .swiperBox {
           height: 300px;
+          cursor: pointer;
           img {
             width: 100%;
             height: 300px;
@@ -50,16 +54,21 @@ import Vue from 'vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import axios from 'axios';
 import 'swiper/dist/css/swiper.css';
+import Tag from '../../components/Tag';
 
 export default {
   data () {
     return {
       bannerList: [],
       swiperOption: {
+          notNextTick: true,
+          // spaceBetween: 30,
+          // effect: 'fade',
+          slidesPerView: 1,
           spaceBetween: 30,
-          effect: 'fade',
           autoplay: true,
           loop: true,
+          autoplayDisableOnInteraction: true,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -74,7 +83,8 @@ export default {
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    Tag
   },
   methods: {
     // 请求banner
@@ -88,11 +98,38 @@ export default {
       }).catch(err => {
         console.log(err);
       });
+    },
+
+    // 鼠标移入的事件
+    mouseEnter () {      
+      // this.swiper.autoplay.paused = true;
+      // console.log("鼠标移入");
+      // console.log(this.swiper.autoplay.paused);
+      // this.swiper
+      // this.swiper.stopAutoplay();
+    },
+
+    mouseLeave () {
+      // this.swiper.autoplay.paused = false;
+      // console.log("鼠标移出");
+      // console.log(this.swiper);
+      // this.swiper.autoplay.run();
+      // this.swiper.startAutoplay();
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper;
     }
   },
   created () {
-    // console.log(123);
+    console.log(123);
     this.getBanner();
+  },
+  mounted () {
+    // console.log(this.swiper.$el[0]);
+    // this.swiper.$el[0].addEventListener('mouseenter', this.mouseEnter);
+    // this.swiper.$el[0].addEventListener('mouseleave', this.mouseLeave);
   }
 };
 </script>

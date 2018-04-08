@@ -1,7 +1,7 @@
 {
   "name": "lian",
   "version": "1.0.0",
-  "description": "链焦点*PC版",
+  "description": "全链社PC版",
   "author": "Alice <2272674323@qq.com>",
   "private": true,
   "scripts": {
@@ -12,9 +12,15 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "array-includes": "^3.0.3",
     "axios": "^0.18.0",
+    "import-local": "^1.0.0",
+    "p-locate": "^2.0.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-pull-to": "^0.1.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -15,7 +15,7 @@
             <router-link to="/info">红绿灯</router-link> 
           </li>
           <li class="tab">
-            <router-link to="/activity">活动</router-link> 
+            <router-link to="/activity" :class="{active:isActive}">活动</router-link> 
           </li>
         </ul>
       </div>
@@ -33,7 +33,21 @@ export default {
   name: 'Nav',
   data () {
     return {
+      isActive: false
     };
+  },
+  watch: {
+    '$route': function (to, from) {
+      // 切换路由时清空之前的数据 / 更新记录页码为0
+      console.log(to.path);
+      let routeInfo = to.path.split('/').indexOf('activity');
+      // console.log(routeInfo);
+      if (routeInfo === -1) {
+        this.isActive = false;
+      } else {
+        this.isActive = true;
+      }
+    }
   }
 };
 </script>
@@ -66,6 +80,9 @@ export default {
       margin-left: 40px;
       font-size: 16px;
       padding-top: 5px;
+      .active {
+        color: orangered;
+      }
       .tab {
         float: left;
         line-height: 60px;
