@@ -2,18 +2,27 @@ import axios from 'axios';
 
  export default {
    getTopic (cb) {
-        let url = 'http://ob.6cd12.cn/v1/api/news/topic_list';
-        // let that = this;
+        let url = '/news/topic_list';
+
         axios.get(url).then(res => {
-            // console.log(res);
-            // that.topicList = res.data.data.topic_list;
-            // that.topicID = that.topicList.topic_id;
-            // console.log(that.topicList);
-            // 数据请求完成之后, 设置topic默认进去选中第一个
-            // Vue.set(that.topicList[0], 'active', true);
             cb(res.data.data.topic_list);
         }).catch(err => {
             console.log(err);
         });
+   },
+
+   getTopicContent (topicID, page, cb) {
+       let url = '/news/news_list';
+       let params = {
+           'topic_id': topicID,
+           'index': page
+       };
+       axios.post(url, params).then(res => {
+            console.log("请求数据成功");
+            console.log(res);
+            cb(res.data.data.news_list);
+       }).catch(err => {
+           console.log(err);
+       });
    }
  };

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/views/Home';
-import Activity from '@/views/Activity';
-import Info from '@/views/Info';
+import Home from '@/pages/index/views/Home';
+import Activity from '@/pages/index/views/Activity';
+import Info from '@/pages/index/views/Info';
 import ActivityLists from '@/components/ActivityLists';
 
 Vue.use(Router);

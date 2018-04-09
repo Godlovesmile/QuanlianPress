@@ -3,7 +3,7 @@
     <div class="nav clearfloat">
       <div class="fl logo">
         <a href="#">
-          <img src="../../static/images/logo.png" alt="logo">
+          <img src="~&/images/logo.png" alt="logo">
         </a>
       </div>
       <div class="fl mainbav">
@@ -12,7 +12,7 @@
             <router-link to="/">首页</router-link> 
           </li>
           <li class="tab">
-            <router-link to="/info">红绿灯</router-link> 
+            <router-link to="/info">快讯</router-link> 
           </li>
           <li class="tab">
             <router-link to="/activity" :class="{active:isActive}">活动</router-link> 
@@ -20,15 +20,16 @@
         </ul>
       </div>
       <div class="fr download">
-        <img class="download_phone" src="../../static/images/phone.png" alt="phone">
+        <img class="download_phone" src="~&/images/phone.png" alt="phone">
         <span>APP下载</span>
-        <img class="download_QRCode" src="../../static/images/QRCode.png" alt="下载页二维码">
+        <img class="download_QRCode" src="~&/images/QRCode.png" alt="下载页二维码">
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'Nav',
   data () {
@@ -36,18 +37,29 @@ export default {
       isActive: false
     };
   },
-  watch: {
-    '$route': function (to, from) {
-      // 切换路由时清空之前的数据 / 更新记录页码为0
-      console.log(to.path);
-      let routeInfo = to.path.split('/').indexOf('activity');
-      // console.log(routeInfo);
+  methods: {
+    // 检测路由信息
+    checkRoute (path) {
+      let routeInfo = path.split('/').indexOf('activity');
+      
       if (routeInfo === -1) {
         this.isActive = false;
       } else {
         this.isActive = true;
       }
     }
+  },
+  watch: {
+    '$route': function (to, from) {
+      // 切换路由时清空之前的数据 / 更新记录页码为0
+      this.checkRoute(to.path);
+    }
+  },
+  created () {
+    // 刷新, 当前路由还是选中状态
+    let path = window.location.hash;
+    
+    this.checkRoute(path);
   }
 };
 </script>

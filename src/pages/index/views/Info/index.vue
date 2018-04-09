@@ -34,8 +34,8 @@
 
 <script>
 import axios from 'axios';
-import scroll from '../../directives/directives';
-import Loading from '../../components/Loading';
+import scroll from '@/directives/directives';
+import Loading from '@/components/Loading';
  
 export default {
   data () {

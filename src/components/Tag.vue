@@ -1,16 +1,15 @@
 <template>
-  <div class="tag">
+  <div class="tag clearfix">
       <ul class="clearfix tag_topic" @click="selectTopic($event)">
-          <li class="fl topic_item" :class="{'active': item.active}" v-for="(item, index) in topicList" :key="index" :value="index">{{item.name}}</li>
+          <li v-if="item.topic_id !== 3" class="fl topic_item" :class="{'active': item.active}" v-for="(item, index) in topicList" :key="index" :value="index">{{item.name}}</li>
       </ul>
-      <topic-content :topicID="topicID" />
+      <topic-content />
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import axios from 'axios';
-import { Store, mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import vuex from 'vuex';
 import TopicContent from '../components/TopicContent';
 
@@ -27,29 +26,19 @@ export default {
     methods: {
         // ...mapActions([ getTopic ]),
         // topic_list
-        // getTopic () {
-        //     let url = 'http://ob.6cd12.cn/v1/api/news/topic_list';
-        //     let that = this;
-        //     axios.get(url).then(res => {
-        //         // console.log(res);
-        //         that.topicList = res.data.data.topic_list;
-        //         that.topicID = that.topicList.topic_id;
-        //         // console.log(that.topicList);
-        //         // 数据请求完成之后, 设置topic默认进去选中第一个
-        //         Vue.set(that.topicList[0], 'active', true);
-        //     }).catch(err => {
-        //         console.log(err);
-        //     });
-        // },
         getTopic () {
             this.$store.dispatch('getTopic', () => {
-                console.log('我也执行了');
-                console.log(this.$store.getters.topicType);
+                 console.log('我的数据完成');
+                 // save topicType (注意是在数据请求完成)
                  this.topicList = this.$store.getters.topicType;
-                 
+                 //  this.$store.commit('setTopic', this.topicList);
+                 this.$store.commit('setTopicID', 0);
+                 // 设置第一个为选中状态
                  Vue.set(this.topicList[0], 'active', true);
+                 console.log(this.topicList);
             });
         },
+
         // click event
         selectTopic (event) {
             if (event.target.nodeName === 'LI') {
@@ -60,17 +49,14 @@ export default {
                     let currentItem = this.topicList[event.target.value];
                     Vue.set(currentItem, 'active', true);
 
+                    // 更新topicID
                     this.$store.commit('setTopicID', event.target.value);
+
                 });
-                // 更新topicID
-                // this.topicID = ++this.topicID;
             }
         }
     },
     created () {
-        // console.log('啦啦啦');
-        // console.log(vuex);
-        // console.log(this.$store);
         this.getTopic();
     }
 };

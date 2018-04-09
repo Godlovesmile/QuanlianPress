@@ -1,4 +1,4 @@
-import home from '../../../api/home';
+import home from '@/api/home';
 
 // initial state
 const state = {

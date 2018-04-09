@@ -1,15 +1,15 @@
 <template>
   <div class="app">
     <!-- 导航 -->
-    <Nav/>
-    <router-view class="content"/>
-    <Footer/>
+    <Nav />
+    <router-view class="content" />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Nav from '../src/components/Nav';
-import Footer from '../src/components/Footer';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 export default {
   name: 'App',
@@ -23,8 +23,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app {
-}
 .content {
   width: 1200px;
   margin: 66px auto;

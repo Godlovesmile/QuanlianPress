@@ -10,7 +10,7 @@
 import axios from 'axios';
 import ActivityChunk from '../components/ActivityChunk';
 import Loading from '../components/Loading';
-import scroll from '../directives/directives';
+import scroll from '@/directives/directives';
 
 export default {
   data () {
@@ -29,7 +29,7 @@ export default {
     // 请求活动数据
     getActivityInfo (typeNum, index) {
       let that = this;
-      let url = 'http://ob.6cd12.cn/v1/api/activity/list';
+      let url = '/activity/list';
       axios.post(url, { 
         type_id: typeNum,
         index: index

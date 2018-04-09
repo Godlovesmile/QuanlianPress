@@ -4,11 +4,15 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store';
+import global from '@/api/config';
+import axios from 'axios';
 
 // css
-import '../static/css/reset.css';
+// import '../@/static/css/reset.css';
+import '&/css/reset.css';
 
 Vue.config.productionTip = false;
+axios.defaults.baseURL = global.BASE_URL;
 
 /* eslint-disable no-new */
 new Vue({

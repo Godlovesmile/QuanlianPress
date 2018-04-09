@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="wrap clearfix">
     <div class="fl wrapleft">
       <!-- loop pic -->
@@ -12,21 +13,25 @@
       </swiper>
       <!-- tag list -->
       <tag />
+      <!-- <topic-content /> -->
     </div>
     <div class="fr wrapright">
         <p>比卡丘</p>
         <p>嫩模广告位</p>
     </div>
   </div>
+  <Footer />
+</div>  
 </template>
 
 <style lang="scss" scoped>
 .wrap {
     width: 1200px;
     margin: 66px auto 0;
+    // background: red;
     .wrapleft {
       width: 770px;
-      height: 300px;
+      // height: 300px;
       margin-top: 69px;
         .swiperBox {
           height: 300px;
@@ -54,7 +59,8 @@ import Vue from 'vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import axios from 'axios';
 import 'swiper/dist/css/swiper.css';
-import Tag from '../../components/Tag';
+import Tag from '@/components/Tag';
+
 
 export default {
   data () {
@@ -84,7 +90,9 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    Tag
+    Tag,
+    // Footer,
+    // TopicContent
   },
   methods: {
     // 请求banner
@@ -123,7 +131,7 @@ export default {
     }
   },
   created () {
-    console.log(123);
+    // console.log(123);
     this.getBanner();
   },
   mounted () {
