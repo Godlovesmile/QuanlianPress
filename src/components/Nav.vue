@@ -17,6 +17,9 @@
           <li class="tab">
             <router-link to="/activity" :class="{active:isActive}">活动</router-link> 
           </li>
+          <li class="tab">
+            <router-link to="/about">关于我们</router-link> 
+          </li>
         </ul>
       </div>
       <div class="fr download">

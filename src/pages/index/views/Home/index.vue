@@ -16,7 +16,7 @@
       <!-- <topic-content /> -->
     </div>
     <div class="fr wrapright">
-        <p>比卡丘</p>
+        <p>比卡</p>
         <p>嫩模广告位</p>
     </div>
   </div>
@@ -131,14 +131,14 @@ export default {
     }
   },
   created () {
-    // console.log(123);
     this.getBanner();
   },
   mounted () {
-    // console.log(this.swiper.$el[0]);
-    // this.swiper.$el[0].addEventListener('mouseenter', this.mouseEnter);
-    // this.swiper.$el[0].addEventListener('mouseleave', this.mouseLeave);
-  }
+  },
+  // beforeRouteEnter (to, from, next) {
+  //   // console.log('路由守卫');
+  //   next();
+  // }
 };
 </script>
 

@@ -18,8 +18,8 @@ import axios from 'axios';
            'index': page
        };
        axios.post(url, params).then(res => {
-            console.log("请求数据成功");
-            console.log(res);
+            // console.log("请求数据成功");
+            // console.log(res);
             cb(res.data.data.news_list);
        }).catch(err => {
            console.log(err);

@@ -1,9 +1,9 @@
 <template>
   <div class="tag clearfix">
       <ul class="clearfix tag_topic" @click="selectTopic($event)">
-          <li v-if="item.topic_id !== 3" class="fl topic_item" :class="{'active': item.active}" v-for="(item, index) in topicList" :key="index" :value="index">{{item.name}}</li>
+          <li v-if="item.topic_id !== 3 && item.topic_id !== 13" class="fl topic_item" :class="{'active': item.active}" v-for="(item, index) in topicList" :key="index" :value="index">{{item.name}}</li>
       </ul>
-      <topic-content />
+      <topic-content />    
   </div>
 </template>
 
@@ -28,13 +28,12 @@ export default {
         // topic_list
         getTopic () {
             this.$store.dispatch('getTopic', () => {
-                 console.log('我的数据完成');
                  // save topicType (注意是在数据请求完成)
                  this.topicList = this.$store.getters.topicType;
                  //  this.$store.commit('setTopic', this.topicList);
-                 this.$store.commit('setTopicID', 0);
-                 // 设置第一个为选中状态
-                 Vue.set(this.topicList[0], 'active', true);
+                 this.$store.commit('setTopicID', 2);
+                 // 设置第一个推荐为选中状态
+                 Vue.set(this.topicList[2], 'active', true);
                  console.log(this.topicList);
             });
         },
@@ -50,8 +49,8 @@ export default {
                     Vue.set(currentItem, 'active', true);
 
                     // 更新topicID
+                    // console.log(event.target.value);
                     this.$store.commit('setTopicID', event.target.value);
-
                 });
             }
         }
@@ -64,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
     .tag {
+        // background: red;
         .tag_topic {
             font-size: 22px;
             height: 70px;

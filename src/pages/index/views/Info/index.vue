@@ -72,7 +72,7 @@ export default {
       // let url = '/api/v1/api/alerts/total/list';
       let _this = this;
       axios.post(url, {
-        'page': page,
+        'index': page,
       }).then(res => {
         this.loading = false;
         _this.items = _this.items.concat(res.data.data.alerts_list);

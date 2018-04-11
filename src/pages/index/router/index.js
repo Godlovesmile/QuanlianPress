@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/pages/index/views/Home';
 import Activity from '@/pages/index/views/Activity';
 import Info from '@/pages/index/views/Info';
+import About from '@/pages/index/views/about';
 import ActivityLists from '@/components/ActivityLists';
 
 Vue.use(Router);
@@ -31,6 +32,11 @@ export default new Router({
         },
         { path: '/activity', redirect: '/activity/type_1'}
       ]
-    }
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },
   ]
 });

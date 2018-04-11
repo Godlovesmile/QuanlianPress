@@ -17,7 +17,7 @@ export default {
     Nav,
     Footer
   },
-  methods: {
+  methods: {   
   }
 };
 </script>
