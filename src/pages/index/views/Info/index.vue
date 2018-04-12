@@ -2,7 +2,7 @@
   <div class="wrap clearfix" v-scroll="loadmore">
     <!-- left -->
     <div class="fl wrapleft">
-      <div class="wrapleft_crumbs">红绿灯&nbsp;&nbsp;&nbsp;动态</div>
+      <div class="wrapleft_crumbs">快讯&nbsp;&nbsp;&nbsp;动态</div>
       <div class="wrapleft_content">
         <div class="wl_content_time">
           <span>{{time}}</span>
@@ -26,8 +26,8 @@
     
     <!-- right -->
     <div class="fr wrapright">
-      <p>热门新闻</p> 
-      <p>嫩模广告位</p>  
+      <p class="title">热门推荐</p> 
+      <recommend />
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@
 import axios from 'axios';
 import scroll from '@/directives/directives';
 import Loading from '@/components/Loading';
+import Recommend from '@/components/Recommend';
  
 export default {
   data () {
@@ -47,18 +48,17 @@ export default {
     };
   },
   components: {
-    Loading
+    Loading,
+    Recommend
   },
   methods: {
 
     // 1.获取红绿灯信息
     getTrafficLightInfo () {
       let url = 'http://ob.6cd12.cn/v1/api/alerts/page/info';
-      // let url = 'http://zx.meet.aodirock.com/v1/api/alerts/page/info';
-      // let url = '/api/v1/api/alerts/page/info';
       let _this = this;
+
       axios.get(url).then(res => {
-        // console.log(res);
         _this.time = res.data.data.now_date;
       }).catch(error => {
         console.log(error);
@@ -68,15 +68,13 @@ export default {
     // 2.获取新闻信息
     getNewsList (page) {
       let url = 'http://ob.6cd12.cn/v1/api/alerts/total/list';
-      // let url = 'http://zx.meet.aodirock.com/v1/api/alerts/total/list';
-      // let url = '/api/v1/api/alerts/total/list';
       let _this = this;
+
       axios.post(url, {
         'index': page,
       }).then(res => {
         this.loading = false;
         _this.items = _this.items.concat(res.data.data.alerts_list);
-        // console.log(res);
       }).catch(error => {
         console.log(error);
       });
@@ -137,7 +135,6 @@ export default {
             padding-left: 10px;
             padding-top: 30px;
             padding-bottom: 10px;
-            // outline: none;
             border-bottom: 1px solid #f3f5f7;
             .item_top {
               height: 50px;
@@ -165,11 +162,14 @@ export default {
     .wrapright {
       width: 380px;
       background: #fff;
-      height: 300px;
-      line-height: 300px;
-      text-align: center;
-      margin-top: 69px;
-      color: orangered;
+      margin-top: 70px;
+      .title {
+        font-size: 18px;
+        color: #333;
+        font-weight: bold;
+        background: #F7F8FA;
+        padding-bottom: 20px;
+      }
     }
   }
 </style>

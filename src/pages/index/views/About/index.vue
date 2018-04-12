@@ -1,14 +1,14 @@
 <template>
   <div class="wrap">
       <div class="placeholder">
-          好玩的区块链社群平台
+          <img src="~&/images/about.png" alt="关于我们图片">
       </div>
       <div class="info">
           <div class="item"><span></span> 关于我们</div>
           <p>
-            全链社是根植于区块链基础上，拥有游戏化、媒体化属性的社群平台，志在为社群用户提供有趣有益、有料有用的行业信息和交流平台，通过亲切好玩、自在轻松带给用户独有的全新体验。
+            全链社是基于区块链技术，带有游戏化、媒体化属性的社群平台，致力于为社群用户提供有趣有益、有料有用的行业信息，和亲切好玩、自在轻松的使用体验。
             <br/><br/>
-            作为产品游戏化的业内先锋，全链社将“好玩”提到了相当的高度，用户在平台上的各种参与和贡献，都可以获得相应的QPC（全链积分）作为奖励，这些QPC可以在平台内的积分商城及丰富的兑换场景中任意兑换。不断流通中的QPC就像一根牢固的情感纽带，将社群用户与全链社紧密地结合在一起，双方也将由此实现同步发展，最终达到共生共赢。
+            作为产品游戏化的业内先锋，全链社将“好玩”提到了相当的高度，用户在平台上的各种参与和贡献都将获得可查证、无篡改的奖励，以此不断激励用户与平台紧密结合，最终实现双方的同步发展和共生共赢。
           </p>
           <div class="item"><span></span> 联系我们</div>
           <p>
@@ -37,17 +37,17 @@ export default {
     width: 1200px;
     margin: 0 auto;
     background: #fff;
-    margin-top: 66px;
+    margin-top: 85px;
     .placeholder {
         height: 320px;
         line-height: 320px;
-        font-size: 300;
-        text-align: center;
-        color: red;
-        background: #ccc;
-        margin-bottom: 50px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
     .info {
+        margin-top: 50px;
         .item {
             margin-bottom: 10px;
             padding: 0 30px;

@@ -9,14 +9,14 @@
                 <h2>{{news.title}}</h2>
                 <!-- 时间/作者 -->
                 <div class="article_info">
-                  <span class="author">{{news.charge_editor.name}}</span>
+                  <span class="author">{{name}}</span>
                   <span class="time">{{news.create_time}}</span>
                 </div>
             </div>
             <!-- 内容 -->
             <div class="content" v-html="news.content"></div>
         </div>
-        <div class="fr article_right">你丫倒是给个广告呀</div>
+        <div class="fr article_right"></div>
     </div>
     <!-- 尾部 -->
   </div>
@@ -31,7 +31,8 @@ export default {
   name: 'App',
   data () {
     return {
-      news: {}
+      news: {},
+      name: ''
     };
   },
   components: {
@@ -47,7 +48,9 @@ export default {
         let url = '  http://ob.6cd12.cn' + '/v1/api/news/news_info?news_id=' + urlInfo.args.nid;
 
         article.getArticleContent(url, res => {
+            // console.log(res);
             this.news = res;
+            this.name = res.charge_editor.name;
         });
     }
   },
@@ -70,8 +73,15 @@ export default {
     width: 1170px;
     // background: burlywood;
     margin: 40px auto;
+    // text-align: center;
+    position: relative;
     .article_left {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         width: 770px;
+        // background: red;
+        margin: 0 auto;
         .header {
             h2 {
                 font-weight: bold;
@@ -97,24 +107,19 @@ export default {
             word-wrap: break-word;
             line-height: 35px;
             font-weight: 440;
-            // background: orange;
-            // p {
-            //     background: green;
-            // }
             img {
                 width: 80%;
-                margin-left: 10%;
-                // border: 1px solid red;
             }
         }
     }
     .article_right {
-      width: 370px;
+      // width: 370px;
+      width: 0;
       height: 400px;
       line-height: 400px;
-      text-align: center;
+    //   text-align: center;
       color: red;
-      border: 1px solid orange;
+    //   border: 1px solid orange;
       float: right;
     }
 }

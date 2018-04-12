@@ -89,11 +89,11 @@ export default {
           display: inline-block;
           width: 270px;
           height: 167px;
-          border-radius: 5px;
+          // border-radius: 5px;
           .item_left_img {
             width: 100%;
             height: 100%;
-            border-radius: 5px;
+            // border-radius: 5px;
           }
         }
         .item_right {
@@ -113,6 +113,11 @@ export default {
             overflow: hidden;
             a {
               display: block;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
               &:hover {
                 color: #228fbd;
               }

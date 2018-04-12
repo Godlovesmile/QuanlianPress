@@ -3,7 +3,7 @@
   <div class="wrap clearfix">
     <div class="fl wrapleft">
       <!-- loop pic -->
-      <swiper class="swiperBox" ref="mySwiper" :options="swiperOption" @mouseover.native="mouseEnter()" @mouseout.native="mouseLeave()">
+      <swiper v-if="swiperSlides.length" class="swiperBox" ref="mySwiper" :options="swiperOption" @mouseover.native="mouseEnter()" @mouseout.native="mouseLeave()">
         <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
           <img :src="slide.pic" alt="banner">
         </swiper-slide>
@@ -68,13 +68,19 @@ export default {
       bannerList: [],
       swiperOption: {
           notNextTick: true,
-          // spaceBetween: 30,
-          // effect: 'fade',
+          spaceBetween: 30,
+          effect: 'fade',
           slidesPerView: 1,
           spaceBetween: 30,
           autoplay: true,
           loop: true,
-          autoplayDisableOnInteraction: true,
+          // autoplay: 3500,
+          // setWrapperSize :true,
+          // pagination : '.swiper-pagination',
+          // paginationClickable :true,
+          // mousewheelControl : true,
+          // observeParents:true,
+          // autoplayDisableOnInteraction: true,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
