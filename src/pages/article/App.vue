@@ -113,14 +113,10 @@ export default {
         }
     }
     .article_right {
-      // width: 370px;
       width: 0;
       height: 400px;
       line-height: 400px;
-    //   text-align: center;
       color: red;
-    //   border: 1px solid orange;
-      float: right;
     }
 }
 </style>

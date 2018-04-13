@@ -1,13 +1,13 @@
 <template>
   <div class="fl chunk">
       <div class="chunk_img">
-          <a href="#">
+          <a :href="url+'/activity.html?activity_id='+data.id" target="_blank">
               <img class="chunk_img_one" :src="data.activity_poster" alt="chunk img">
           </a>
       </div>
       <div class="chunk_apply">
           <span class="fl title">{{data.title}}</span>
-          <i class="fr btn" :class="{btn_stop: data.finished === 1}">{{data.finished === 1 ? '报名截止' : '报名中'}}</i>
+          <i class="fr btn" :class="{btn_stop: data.finished === 1}">{{ data.finished === 1 ? '报名截止' : '报名中' }}</i>
       </div>
 
       <div class="chunk_address">
@@ -25,14 +25,19 @@
 </template>
 
 <script>
+import config from '@/api/config';
+
 export default {
     props: ['chunk-data'],
     data () {
         return { 
-            data: this.chunkData
+            data: this.chunkData,
+            url: config.QUANlIAN_URL
         };
     },
     mounted () {
+        console.log(23333);
+        console.log(this.data);
     }
 };
 </script>
