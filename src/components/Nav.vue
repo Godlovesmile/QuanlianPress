@@ -85,7 +85,7 @@ export default {
     .logo {
       line-height: 66px;
       img {
-        width: 150px;
+        width: 130px;
         height: 42px;
         vertical-align: middle;
       }
@@ -93,22 +93,24 @@ export default {
     .mainbav {
       width: 600px;
       margin-left: 40px;
-      font-size: 16px;
+      font-size: 18px;
       padding-top: 5px;
       .active {
-        color: orangered;
+        color: #ff6600;
+        font-size: 22px;
       }
       .tab {
         float: left;
         line-height: 60px;
         cursor: pointer;
         display: block;
-        width: 72px;
+        width: 88px;
+        // background: #ccc;
         color: #222;
         text-align: center;
         font-weight: 500;
         &:hover {
-          color: orange;
+          color: #ff6600;
         }
       }
     }
@@ -116,14 +118,19 @@ export default {
       position: relative;
       line-height: 66px;
       cursor: pointer;
+      .download_phone {
+        margin-right: 12px;
+        margin-top: 21px;
+        vertical-align: center;
+      }
       span {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 500;
         margin-left: -10px;
       }
       .download_QRCode {
         position: absolute;
-        left: 18px;
+        left: -12px;
         top: 55px;
         width: 120px;
         height: 120px;
@@ -131,12 +138,12 @@ export default {
       }
       &:hover .download_QRCode{
         display: block;
-        // border: 1px solid red;
       }
     }
   }
 }
 .router-link-exact-active {
-  color: orangered;
+  color: #ff6600;
+  font-size: 22px;
 }
 </style>

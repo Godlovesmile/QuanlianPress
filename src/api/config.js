@@ -1,5 +1,6 @@
 const BASE_URL = 'http://ob.6cd12.cn/v1/api';
 const QUANlIAN_URL = 'http://localhost:8080';
+// const QUANlIAN_URL = 'http://quanlian.io:80';
 
 export default {
     BASE_URL,

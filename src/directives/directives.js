@@ -14,4 +14,8 @@ const scroll = Vue.directive('scroll', {
     }
 });
 
-export { scroll };
+const time = Vue.filter('time', function (value) {
+    return Math.floor(value/60)+':'+Math.floor(value%60);
+});
+
+export { scroll, time };

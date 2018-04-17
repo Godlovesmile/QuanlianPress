@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="topic_content">
       <ul class="article-main">
         <li class="clearfix article_item" v-for="(item, index) in topicContent" :key="index">
           <!-- left -->
@@ -9,7 +9,7 @@
           <!-- right -->
           <div class="fr item_right">
             <h3><a :href="url+'/article.html?nid='+item.news_id" target="_blank">{{item.title}}</a></h3>
-            <p class="item_right_center">我是摘要内容我是摘要内容我是摘要内容我是摘要内容我是摘要内容我是摘要内容我是摘要内容我是摘要内容我是摘要内容</p>
+            <p class="item_right_center">{{item.digest}}</p>
             <div class="item_right_bottom">
               <span class="name">{{item.charge_editor.name}}</span>
               <span>{{item.create_time}}</span>
@@ -79,12 +79,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.topic_content {
+    // background: red;
     .article-main {
       width: 100%;
       .article_item {
         background: #fff;
-        margin-top: 40px;
+        margin-top: 20px;
         .item_left {
           display: inline-block;
           width: 270px;
@@ -119,12 +120,12 @@ export default {
               -webkit-line-clamp: 2;
               overflow: hidden;
               &:hover {
-                color: #228fbd;
+                color: #ff6600;
               }
             }
           }
           .item_right_center {
-            height: 66px;
+            height: 60px;
             width: 100%;
             position: absolute;
             left: 0;
@@ -160,10 +161,11 @@ export default {
       background:#ccc;
       text-align: center;
       border-radius: 8px;
-      margin-top: 40px;
+      margin-top: 25px;
+      font-size: 20px;
+      color: #fff;
       &:hover {
-        background: orange;
-        opacity: 0.5;
+        background: #ffc397;
         cursor: pointer;
       }
     }

@@ -48,9 +48,17 @@ export default {
         let url = '  http://ob.6cd12.cn' + '/v1/api/news/news_info?news_id=' + urlInfo.args.nid;
 
         article.getArticleContent(url, res => {
-            // console.log(res);
             this.news = res;
             this.name = res.charge_editor.name;
+
+            // 设置头部信息 description keywords
+            let title = document.querySelector('.title');
+            let description = document.querySelector('.description');
+            let keywords = document.querySelector('.keywords');
+            title.innerHTML = this.news.title;
+            description.content = this.news.digest;
+            keywords.content = this.news.tags.join(',');
+            console.log(res);
         });
     }
   },
@@ -71,16 +79,13 @@ export default {
 <style lang="scss">
 .article {
     width: 1170px;
-    // background: burlywood;
     margin: 40px auto;
-    // text-align: center;
     position: relative;
     .article_left {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         width: 770px;
-        // background: red;
         margin: 0 auto;
         .header {
             h2 {
@@ -109,6 +114,7 @@ export default {
             font-weight: 440;
             img {
                 width: 80%;
+                margin-left: 10%;
             }
         }
     }

@@ -43,6 +43,9 @@ export default {
             activity.getActivityContent(id, res => {
                 console.log(res);
                 this.data = res;
+
+                let title = document.querySelector('.title');
+                title.innerHTML = this.data.title;
             });
         }
     },

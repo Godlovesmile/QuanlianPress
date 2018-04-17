@@ -1,58 +1,37 @@
 <template>
 <div>
-  <div class="wrap clearfix">
+  <div class="wrap_home clearfix">
     <div class="fl wrapleft">
       <!-- loop pic -->
-      <swiper v-if="swiperSlides.length" class="swiperBox" ref="mySwiper" :options="swiperOption" @mouseover.native="mouseEnter()" @mouseout.native="mouseLeave()">
-        <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-          <img :src="slide.pic" alt="banner">
-        </swiper-slide>
-        <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
-        <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
-        <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
-      </swiper>
+      <div class="swiper_father" @mouseenter="mouseEnter()" @mouseleave="mouseLeave()">
+        <swiper v-if="swiperSlides.length" class="swiperBox" ref="mySwiper" :options="swiperOption">
+          <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+            <div class="swiper_content" :key="index">{{slide.title}}</div>
+            <a :href="url+'/article.html?nid='+slide.news_id" target="_blank"><img :src="slide.pic" alt="banner"></a>
+          </swiper-slide>
+          <div class="swiper-pagination swiper-pagination-white" slot="pagination">
+          </div>
+          <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+          <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+        </swiper>
+      </div>
+      <!-- hot label -->
+      <hot-label />
       <!-- tag list -->
       <tag />
       <!-- <topic-content /> -->
     </div>
     <div class="fr wrapright">
-        <p>比卡</p>
-        <p>嫩模广告位</p>
+        <a href="http://quanlian.io/activity.html?activity_id=21">
+            <img src="~&/images/r_activity.png" alt="活动推荐">
+        </a>
+        <div class="music">
+            <music />
+        </div>
     </div>
   </div>
-  <Footer />
 </div>  
 </template>
-
-<style lang="scss" scoped>
-.wrap {
-    width: 1200px;
-    margin: 66px auto 0;
-    // background: red;
-    .wrapleft {
-      width: 770px;
-      // height: 300px;
-      margin-top: 69px;
-        .swiperBox {
-          height: 300px;
-          cursor: pointer;
-          img {
-            width: 100%;
-            height: 300px;
-          }
-        }
-    }
-    .wrapright p {
-      width: 370px;
-      background: #fff;
-      height: 300px;
-      line-height: 300px;
-      text-align: center;
-      margin-top: 69px;
-      color: orangered;
-    }
-  }
-</style>
 
 <script>
 import Vue from 'vue';
@@ -60,7 +39,9 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import axios from 'axios';
 import 'swiper/dist/css/swiper.css';
 import Tag from '@/components/Tag';
-
+import Music from '@/components/Music';
+import config from '@/api/config';
+import HotLabel from '@/components/HotLabel';
 
 export default {
   data () {
@@ -72,63 +53,52 @@ export default {
           effect: 'fade',
           slidesPerView: 1,
           spaceBetween: 30,
-          autoplay: true,
+          autoplay: {disableOnInteraction:false},
           loop: true,
-          // autoplay: 3500,
-          // setWrapperSize :true,
-          // pagination : '.swiper-pagination',
-          // paginationClickable :true,
-          // mousewheelControl : true,
-          // observeParents:true,
-          // autoplayDisableOnInteraction: true,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
           },
+          observer: true,
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
         },
-      swiperSlides: []
+      swiperSlides: [],
+      url: config.QUANlIAN_URL
     };
   },
   components: {
     swiper,
     swiperSlide,
     Tag,
-    // Footer,
-    // TopicContent
+    Music,
+    HotLabel
   },
   methods: {
     // 请求banner
     getBanner () {
       let that = this;
       let url = 'http://ob.6cd12.cn/v1/api/hp/banner/list';
+
       axios.get(url).then(res => {
-        // console.log(res);
         that.swiperSlides = res.data.data.banner_list;
-        // console.log(that.bannerList);
+        console.log(res);
       }).catch(err => {
         console.log(err);
       });
     },
 
     // 鼠标移入的事件
-    mouseEnter () {      
-      // this.swiper.autoplay.paused = true;
-      // console.log("鼠标移入");
-      // console.log(this.swiper.autoplay.paused);
-      // this.swiper
-      // this.swiper.stopAutoplay();
+    mouseEnter () {   
+      // 鼠标移入, 暂停轮播  
+      this.swiper.autoplay.pause();
     },
 
     mouseLeave () {
-      // this.swiper.autoplay.paused = false;
-      // console.log("鼠标移出");
-      // console.log(this.swiper);
-      // this.swiper.autoplay.run();
-      // this.swiper.startAutoplay();
+      // 鼠标移出, 开始轮播
+      this.swiper.autoplay.run();
     }
   },
   computed: {
@@ -138,13 +108,77 @@ export default {
   },
   created () {
     this.getBanner();
-  },
-  mounted () {
-  },
-  // beforeRouteEnter (to, from, next) {
-  //   // console.log('路由守卫');
-  //   next();
-  // }
+  }
 };
 </script>
+
+<style lang="scss">
+.wrap_home {
+    width: 1200px;
+    // margin: 66px auto 0;
+    .wrapleft {
+      width: 770px;
+      margin-top: 30px;
+      // background: green;
+      .swiper_father {
+        position: relative;
+        margin-bottom: 20px;
+        .swiperBox {
+          height: 300px;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 300px;
+          }
+          .swiper_content {
+            position: absolute;
+            left: 39px;
+            bottom: 10px;
+            font-size: 25px;
+            color: #fff;
+            font-weight: bold;
+            width: 600px;
+            height: 36px;
+            text-overflow : ellipsis; 
+            white-space : nowrap; 
+            overflow : hidden; 
+          }
+          .swiper-pagination {
+            background: rgba(0, 0, 0, 0.2);
+            text-align: right;
+            width: 770px;
+            height: 60px;
+            line-height: 60px;
+            bottom: 0;
+            .swiper-pagination-bullet {
+              opacity: 1;
+              width: 10px;
+              height: 10px;
+              background: #ccc;
+            }
+            .swiper-pagination-bullet:last-child {
+              margin-right: 20px;
+            }
+            .swiper-pagination-bullet-active {
+              opacity: 1;
+              background: #ff6600;
+            }
+          }
+        }
+      }  
+    }
+    .wrapright {
+      width: 390px;
+      margin-top: 30px;
+      img {
+        width: 100%;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      .music {
+        height: 260px;
+      }
+    }
+  }
+</style>
 

@@ -77,7 +77,7 @@ export default {
             line-height: 22px;
             border-radius: 46px;
             text-align: center;
-            background: orange;
+            background: #ff6600;
             font-size: 12px;
         }
         .btn_stop {

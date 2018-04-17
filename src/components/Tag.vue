@@ -34,7 +34,7 @@ export default {
                  this.$store.commit('setTopicID', 2);
                  // 设置第一个推荐为选中状态
                  Vue.set(this.topicList[2], 'active', true);
-                 console.log(this.topicList);
+                //  console.log(this.topicList);
             });
         },
 
@@ -63,26 +63,29 @@ export default {
 
 <style lang="scss" scoped>
     .tag {
-        // background: red;
+        // background: green;
         .tag_topic {
-            font-size: 22px;
-            height: 70px;
-            line-height: 70px;
+            font-size: 20px;
+            height: 50px;
+            line-height: 50px;
             color: #999;
+            background: #fff;
             .topic_item {
-                margin-top: 28px;
                 display: inline-block;
-                height: 40px;
-                line-height: 40px;
-                margin-right: 20px;
+                height: 50px;
+                line-height: 50px;
+                margin-right: 29px;
+                padding: 0 15px;
                 cursor: pointer;
+                // background: red;
                 &:hover {
-                    color: orange;
+                    // color: orange;
                 }
             }
             .active {
-                color: orange;
-                border-bottom: 2px solid orange;
+                color: #fff;
+                background: #ffc397;
+                // border-bottom: 2px solid orange;
             }
         }
     }

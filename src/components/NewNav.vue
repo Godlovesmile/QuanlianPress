@@ -49,14 +49,19 @@ export default {
       position: relative;
       line-height: 66px;
       cursor: pointer;
+      .download_phone {
+        margin-right: 12px;
+        margin-top: 21px;
+        vertical-align: center;
+      }
       span {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 500;
         margin-left: -10px;
       }
       .download_QRCode {
         position: absolute;
-        left: 18px;
+        left: -12px;
         top: 55px;
         width: 120px;
         height: 120px;
