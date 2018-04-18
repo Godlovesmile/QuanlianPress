@@ -5,13 +5,13 @@
                 <img class="fl clearfix" src="~&/images/bitcoin.png" alt="音频图标">
                 <div class="fr press">
                     <p class="text">
-                        <span class="text_one">今晚链8点</span> 
-                        <span class="text_two">...苗苗/甜甜</span> 
+                        <span class="text_one">萌妹聊链：话说央妈</span> 
+                        <!-- <span class="text_two">苗苗/甜甜</span>  -->
                     </p>
                     <div class="press_bottom">
-                        <div class="strip"></div>
+                        <div :style="'width:'+press" class="strip"></div>
                     </div>
-                    <div class="time">{{nowTime | analysisTime}}</div>
+                    <!-- <div class="time">{{nowTime | analysisTime}}</div> -->
                 </div>
             </div>
             <div class="play clearfix">
@@ -30,7 +30,7 @@
             <!-- <audio autobuffer class="audio" src=" http://m.ximalaya.com/share/sound/81920255">不支持</audio> -->
         </section>
         <div class="fr music_right">
-            <a href="http://www.ximalaya.com/109321999/album/14624907/" target="_blank">
+            <a href="http://mp.weixin.qq.com/mp/homepage?__biz=MzUzODc0MjkzOQ==&hid=3&sn=ff1cc5cb3415a7e1b531a9fc966cefcb&scene=18#wechat_redirect" target="_blank">
                 <img src="~&/images/more.png" alt="更多按钮">
             </a>
         </div>
@@ -52,7 +52,8 @@ export default {
             totalTime: 0,
             currentTime: 0,
             nowTime: 0,
-            timer: 0
+            timer: 0,
+            press: ''
         };
     },
     methods: {
@@ -65,11 +66,22 @@ export default {
                 this.status = 'play';
                 this.totalTime = this.audio.duration;
                 // this.currentTime = this.audio.currentTime;
-                console.log(this.totalTime);
+                // console.log(this.totalTime);
                 // 时间倒计时
                 let that = this;
                 this.timer = setInterval(function () {
-                    that.nowTime = that.totalTime-that.audio.currentTime;
+                    // that.nowTime = that.totalTime-that.audio.currentTime;
+                    let currentT = that.audio.currentTime;
+                    let totalT = that.totalTime;
+                    that.press = (that.audio.currentTime / that.totalTime) * 100 + '%';
+                    if (that.press === '100%') {
+                        clearInterval(this.timer);
+                        that.press = '0%';
+                        this.status = 'pause';
+                    }
+                    // console.log(currentT);
+                    // console.log(totalT);
+                    // console.log(that.press);
                 }, 100);
             } else {
                 this.audio.pause();
@@ -126,9 +138,10 @@ export default {
                     width: 160px;
                     height:5px;
                     background: #ccc;
+                    // background: red;
                     border-radius: 2.5px;
                     .strip {
-                        width:0;height:5px;background: #ff6600;
+                        width: 0;height:5px;background: #ff6600;
                     }
                 }
                 .time {
@@ -154,6 +167,7 @@ export default {
                 margin-right: 25px;
                 img {
                     margin-top: 12px;
+                    cursor: pointer;
                 }
             }
             .prev {

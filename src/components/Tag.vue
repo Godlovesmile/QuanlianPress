@@ -74,7 +74,7 @@ export default {
                 display: inline-block;
                 height: 50px;
                 line-height: 50px;
-                margin-right: 29px;
+                margin-right: 25px;
                 padding: 0 15px;
                 cursor: pointer;
                 // background: red;

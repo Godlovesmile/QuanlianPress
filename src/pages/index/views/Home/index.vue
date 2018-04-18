@@ -22,12 +22,15 @@
       <!-- <topic-content /> -->
     </div>
     <div class="fr wrapright">
-        <a href="http://quanlian.io/activity.html?activity_id=21">
+        <a class="r_activity_img" href="http://quanlian.io/activity.html?activity_id=21">
             <img src="~&/images/r_activity.png" alt="活动推荐">
         </a>
+        
         <div class="music">
             <music />
         </div>
+
+        <news-flash />
     </div>
   </div>
 </div>  
@@ -42,6 +45,7 @@ import Tag from '@/components/Tag';
 import Music from '@/components/Music';
 import config from '@/api/config';
 import HotLabel from '@/components/HotLabel';
+import NewsFlash from '@/components/NewsFlash';
 
 export default {
   data () {
@@ -74,7 +78,8 @@ export default {
     swiperSlide,
     Tag,
     Music,
-    HotLabel
+    HotLabel,
+    NewsFlash
   },
   methods: {
     // 请求banner
@@ -84,7 +89,7 @@ export default {
 
       axios.get(url).then(res => {
         that.swiperSlides = res.data.data.banner_list;
-        console.log(res);
+        // console.log(res);
       }).catch(err => {
         console.log(err);
       });
@@ -170,13 +175,15 @@ export default {
     .wrapright {
       width: 390px;
       margin-top: 30px;
-      img {
-        width: 100%;
-        margin-bottom: 20px;
-        cursor: pointer;
+      .r_activity_img {
+        img {
+            width: 100%;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
       }
       .music {
-        height: 260px;
+        // height: 260px;
       }
     }
   }

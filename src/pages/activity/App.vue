@@ -23,6 +23,7 @@
 import config from '@/api/config';
 import activity from '@/api/activity';
 import NewNav from '@/components/NewNav';
+import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
 export default {

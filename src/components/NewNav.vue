@@ -2,9 +2,25 @@
   <div class="navBar">
     <div class="nav clearfloat">
       <div class="fl logo">
-        <a href="#">
+        <a href="http://quanlian.io/#/">
           <img src="~&/images/logo.png" alt="logo">
         </a>
+      </div>
+      <div class="fl mainbav">
+        <ul class="clearfloat">
+          <li class="tab">
+            <a href="http://quanlian.io/#/">首页</a> 
+          </li>
+          <li class="tab">
+            <a to="http://quanlian.io/#/info">快讯</a> 
+          </li>
+          <li class="tab">
+            <a href="http://quanlian.io/#/activity/type_1">活动</a> 
+          </li>
+          <li class="tab">
+            <a href="http://quanlian.io/#/about">关于我们</a> 
+          </li>
+        </ul>
       </div>
       <div class="fr download">
         <img class="download_phone" src="~&/images/phone.png" alt="phone">
@@ -43,6 +59,30 @@ export default {
         width: 150px;
         height: 42px;
         vertical-align: middle;
+      }
+    }
+    .mainbav {
+      width: 600px;
+      margin-left: 40px;
+      font-size: 18px;
+      padding-top: 5px;
+      .active {
+        color: #ff6600;
+        font-size: 22px;
+      }
+      .tab {
+        float: left;
+        line-height: 60px;
+        cursor: pointer;
+        display: block;
+        width: 88px;
+        // background: #ccc;
+        color: #222;
+        text-align: center;
+        font-weight: 500;
+        &:hover {
+          color: #ff6600;
+        }
       }
     }
     .download {

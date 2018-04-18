@@ -29,7 +29,7 @@ export default {
     methods: {
         getRecommendContent () {
             info.getRecommendContent(res => {
-                console.log(res);
+                // console.log(res);
                 this.recommendData = res;
             });
         }

@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <NewNav />
+    <new-nav />
     <!-- 导航 -->
     <div class="article clearfix">
         <div class="fl article_left">
@@ -26,6 +26,7 @@
 import article from '@/api/article';
 import config from '@/api/config';
 import NewNav from '@/components/NewNav';
+// import Nav from '@/components/Nav';
 
 export default {
   name: 'App',
